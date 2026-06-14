@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DayCode | Portfolio</title>
+    <!-- Подключаем CSS-файлы -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Подключаем библиотеку иконок -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Живой задний фон (Анимированные неоновые сферы) -->
+    <div class="background-decor">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+    </div>
+
+    <!-- Главная стеклянная карточка-визитка -->
+    <div class="portfolio-card animate-pop">
+        <div class="avatar-container">
+            <div class="avatar-ring"></div>
+            <div class="avatar">
+                <!-- ФОТОГРАФИЯ АВАТАРА (Обновлено) -->
+                <img src="{{ url_for('static', filename='avatar.jpg') }}" alt="DayCode">
+            </div>
+        </div>
+        
+        <h1 class="animate-slide">DayCode</h1>
+        <p class="subtitle animate-slide">Python Backend Developer</p>
+        
+        <!-- Креативные интерактивные кнопки -->
+        <div class="social-links animate-slide">
+            <a href="https://t.me/IDAY3" target="_blank" class="link-btn tg">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+            <a href="https://github.com/verbickijanton86-afk" target="_blank" class="link-btn gh">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="daycode578@gmail.com" class="link-btn email">
+                <i class="fa-solid fa-envelope"></i> Почта
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
