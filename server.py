@@ -9,6 +9,6 @@ def home():
 if __name__ == '__main__':
     import os
     # Берем порт, который выдает хостинг, или ставим 3000 локально
-    port = int(os.environ.get("PORT", 3000))
+    port = int(os.environ.get("PORT", 5000))
     # Запуск на хосте 0.0.0.0 обязателен, чтобы сервер слушал внешнюю сеть
     app.run(host='0.0.0.0', port=port)
