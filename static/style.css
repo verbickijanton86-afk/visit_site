@@ -1,0 +1,224 @@
+/* Общие настройки экрана */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #06040a;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* === ЖИВОЙ АНИМИРОВАННЫЙ ФОН === */
+.background-decor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Сильное размытие создает эффект неонового тумана */
+    opacity: 0.5;
+}
+
+/* Настройки трех летающих сфер и привязка к ним анимаций */
+.c1 {
+    width: 300px; height: 300px;
+    background: #6c5ce7;
+    top: 15%; left: 20%;
+    animation: float1 14s ease-in-out infinite alternate;
+}
+
+.c2 {
+    width: 250px; height: 250px;
+    background: #00f2fe;
+    bottom: 15%; right: 20%;
+    animation: float2 12s ease-in-out infinite alternate;
+}
+
+.c3 {
+    width: 200px; height: 200px;
+    background: #e84393;
+    top: 45%; left: 45%;
+    animation: float1 10s ease-in-out infinite alternate-reverse;
+}
+
+/* === СТЕКЛЯННАЯ КАРТОЧКА (ГЛАССМОРФИЗМ) === */
+.portfolio-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px); /* Эффект матового стекла */
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Тонкая стеклянная рамка */
+    padding: 50px 35px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+    max-width: 310px;
+    width: 100%;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Карточка всегда поверх летающего фона */
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 15px 0 5px 0;
+    letter-spacing: -0.5px;
+    background: linear-gradient(45deg, #fff, #a29bfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: #a49fba;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 35px 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* === КРЕАТИВНЫЙ АВАТАР И ФОТОГРАФИЯ === */
+.avatar-container {
+    position: relative;
+    width: 90px; height: 90px;
+    margin: 0 auto;
+}
+
+.avatar {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 84px; height: 84px;
+    background: #0f0c1b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden; /* Обрезает углы фото внутри блока */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Фото красиво заполняет круг без сжатия */
+    border-radius: 50%;
+}
+
+.avatar-ring {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, #6c5ce7, #00f2fe, #e84393);
+    border-radius: 50%;
+    animation: rotateRing 8s linear infinite;
+}
+
+/* === КНОПКИ-ССЫЛКИ === */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #e2e1e6;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Эффекты наведения с неоновым свечением */
+.link-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #06040a;
+    transform: translateY(-3px) scale(1.02);
+}
+
+.link-btn.tg:hover { box-shadow: 0 15px 30px rgba(0, 242, 254, 0.3); }
+.link-btn.gh:hover { box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3); }
+.link-btn.email:hover { box-shadow: 0 15px 30px rgba(232, 67, 147, 0.3); }
+
+.link-btn:active {
+    transform: translateY(-1px) scale(1);
+}
+
+.link-btn i {
+    font-size: 18px;
+}
+
+/* === ТРАЕКТОРИИ ДВИЖЕНИЯ ШАРОВ И ЭФФЕКТЫ ПОЯВЛЕНИЯ === */
+
+/* Анимация вращения ободка вокруг фото */
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Живое хаотичное покачивание первой и третьей сферы */
+@keyframes float1 {
+    0% { 
+        transform: translateY(0) translateX(0) scale(1); 
+    }
+    50% {
+        transform: translateY(-60px) translateX(40px) scale(1.15); /* Вверх и вправо */
+    }
+    100% { 
+        transform: translateY(20px) translateX(-20px) scale(0.95); /* Вниз и влево */
+    }
+}
+
+/* Движение по диагонали для второй сферы */
+@keyframes float2 {
+    0% { 
+        transform: translateX(0) translateY(0) scale(1); 
+    }
+    50% { 
+        transform: translateX(-50px) translateY(50px) scale(0.9); /* Влево и вниз */
+    }
+    100% { 
+        transform: translateX(30px) translateY(-20px) scale(1.1); /* Вправо и вверх */
+    }
+}
+
+/* Плавное проявление самой карточки */
+@keyframes popIn {
+    0% { transform: scale(0.92); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Выезд текста и кнопок снизу */
+@keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-pop {
+    animation: popIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.animate-slide {
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Поочередная задержка появления элементов */
+h1.animate-slide { animation-delay: 0.2s; }
+.subtitle.animate-slide { animation-delay: 0.3s; }
+.social-links.animate-slide { animation-delay: 0.4s; }
